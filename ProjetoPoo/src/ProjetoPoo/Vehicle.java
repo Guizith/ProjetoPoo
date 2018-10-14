@@ -302,14 +302,14 @@ public class Vehicle {
     
     //Função para remover o objeto casa haja colisão
     public void collision(ArrayList<Bicycle> b,ArrayList<Motorcycle> m, ArrayList<Car> c, ArrayList<Truck> t) {
-        int i, j;
+        int i , j;
         
-         for (i = 0; i < m.size(); i++) {  //Colisão bike com moto
+         for (i  = 0; i  < m.size(); i ++) {  //Colisão bike com moto
             for (j = 0; j < b.size(); j++) {
-                if (m.get(i).getX() == b.get(j).getX() & m.get(i).getY() == b.get(j).getY()) {
+                if (m.get(i ).getX() == b.get(j).getX() & m.get(i ).getY() == b.get(j).getY()) {
                     b.remove(j);
-                    if (i > 0) {
-                        i--;
+                    if (i  > 0) {
+                        i --;
                     }
                     if (j > 0) {
                         j--;
@@ -318,26 +318,14 @@ public class Vehicle {
                 }
             }
         }
-        for (i = 0; i < t.size(); i++) {  //Colisão bike com caminhao
-            for (j = 0; j < b.size(); j++) {
-                if (t.get(i).getX() == b.get(j).getX() & t.get(i).getY() == b.get(j).getY()) {
-                    b.remove(j);
-                    if (i > 0) {
-                        i--;
-                    }
-                    if (j > 0) {
-                        j--;
-                    }
+         
 
-                }
-            }
-        } 
-        for (i = 0; i < c.size(); i++) {  //Colisão bike com carro
+        for (i  = 0; i  < c.size(); i ++) {  //Colisão bike com carro
             for (j = 0; j < b.size(); j++) {
-                if (c.get(i).getX() == b.get(j).getX() & c.get(i).getY() == b.get(j).getY()) {
+                if (c.get(i ).getX() == b.get(j).getX() & c.get(i ).getY() == b.get(j).getY()) {
                     b.remove(j);
-                    if (i > 0) {
-                        i--;
+                    if (i  > 0) {
+                        i --;
                     }
                     if (j > 0) {
                         j--;
@@ -347,7 +335,7 @@ public class Vehicle {
             }
         }       
         
-        for (i = 0; i < c.size(); i++) {  //Colisão moto com carro
+            for (i = 0; i < c.size(); i++) {  //Colisão moto com carro
             for (j = 0; j < m.size(); j++) {
                 if (c.get(i).getX() == m.get(j).getX() & c.get(i).getY() == m.get(j).getY()) {
                     m.remove(j);
@@ -389,6 +377,63 @@ public class Vehicle {
             }
         }
 
+        for (i = 0; i < c.size(); i++) { //Colisão carro com carro
+            for (j = i + 1; j < c.size() - 1; j++) {
+                if (c.get(i).getX() == c.get(j).getX() & c.get(i).getY() == c.get(j).getY()) {
+                    c.remove(i);
+                    c.remove(j);
+                    if (i > 0) {
+                        i--;
+                    }
+                    if (j > 0) {
+                        j--;
+                    }
+                }
+            }
+        }
+
+        for (i = 0; i < t.size(); i++) { //Colisão carro com caminhao
+            for (j = 0; j < c.size(); j++) {
+                if (t.get(i).getX() == c.get(j).getX() & t.get(i).getY() == c.get(j).getY()) {
+                    c.remove(j);
+                    if (i > 0) {
+                        i--;
+                    }
+                    if (j > 0) {
+                        j--;
+                    }
+                }
+            }
+        }
+
+        for (i = 0; i < t.size(); i++) { //Colisão caminhao com caminhao
+            for (j = i + 1; j < t.size() - 1; j++) {
+                if (t.get(i).getX() == t.get(j).getX() & t.get(i).getY() == t.get(j).getY()) {
+                    t.remove(i);
+                    t.remove(j);
+                    if (i > 0) {
+                        i--;
+                    }
+                    if (j > 0) {
+                        j--;
+                    }
+                }
+            }
+        }
+        for (i = 0; i < b.size(); i++) { //Colisão bike com bike
+            for (j = i + 1; j < b.size() - 1; j++) {
+                if (b.get(i).getX() == b.get(j).getX() & b.get(i).getY() == b.get(j).getY()) {
+                    b.remove(i);
+                    b.remove(j);
+                    if (i > 0) {
+                        i--;
+                    }
+                    if (j > 0) {
+                        j--;
+                    }
+                }
+            }
+        }
 
 
     }
