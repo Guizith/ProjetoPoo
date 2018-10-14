@@ -391,7 +391,22 @@ public class Vehicle {
                 }
             }
         }
+        
+        for (i  = 0; i  < t.size(); i ++) {  //Colisão bike com caminhao
+            for (j = 0; j < b.size(); j++) {
+                if (t.get(i ).getX() == b.get(j).getX() & t.get(i ).getY() == b.get(j).getY()) {
+                    b.remove(j);
+                    if (i  > 0) {
+                        i --;
+                    }
+                    if (j > 0) {
+                        j--;
+                    }
 
+                }
+            }
+        }      
+        
         for (i = 0; i < t.size(); i++) { //Colisão carro com caminhao
             for (j = 0; j < c.size(); j++) {
                 if (t.get(i).getX() == c.get(j).getX() & t.get(i).getY() == c.get(j).getY()) {
